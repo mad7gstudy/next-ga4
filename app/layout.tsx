@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics>
+        {/* <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics> */}
         {children}
       </body>
     </html>

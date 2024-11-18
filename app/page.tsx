@@ -1,9 +1,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics>
       <main className={styles.main}>
         <Image
           className={styles.logo}
