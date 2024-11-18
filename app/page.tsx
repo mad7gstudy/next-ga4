@@ -5,7 +5,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 export default function Home() {
   return (
     <div className={styles.page}>
-      <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics>
+      {/* <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics> */}
       <main className={styles.main}>
         <Image
           className={styles.logo}
