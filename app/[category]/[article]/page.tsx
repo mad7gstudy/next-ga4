@@ -1,21 +1,19 @@
-import { Metadata } from 'next'
-
+// app/[category]/[article]/page.tsx
 type Props = {
     params: {
-        category: string,
-        article: string
-    }
-}
-
-// キャッシュ1日
-export const revalidate = 31536000
-
-const Article = async (props: Props) => {
+      category: string;
+      article: string;
+    };
+  };
+  
+  export default function Page({ params }: Props) {
+    const { category, article } = params;
+  
     return (
-        <>
-            <div>{props.params.category} / {props.params.article}</div>
-        </>
-    )
-}
-
-export default Article
+      <div>
+        <h1>Category: {category}</h1>
+        <h2>Article: {article}</h2>
+      </div>
+    );
+  }
+  
