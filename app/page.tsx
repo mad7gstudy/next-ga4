@@ -1,26 +1,14 @@
-'use client'
-
 import Image from "next/image";
 import styles from "./page.module.css";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import Link from "next/link";
 import { generateRandomString } from "./_lib/gen";
-import { useEffect } from "react";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 export default function Home() {
   const id = generateRandomString()
-
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        'blog_topic' : 'Web制作'
-    });
-  })
-
   return (
     <div className={styles.page}>
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -38,7 +26,12 @@ export default function Home() {
         </ol>
 
         <div className={styles.ctas}>
-          <Link href="/category" className={styles.primary} rel="noopener noreferrer" >
+          <a
+            className={styles.primary}
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image
               className={styles.logo}
               src="/vercel.svg"
@@ -47,10 +40,15 @@ export default function Home() {
               height={20}
             />
             Deploy now
-          </Link>
-          <Link href="/category" className={styles.secondary} rel="noopener noreferrer" >
-            Read our docsF
-          </Link>
+          </a>
+          <a
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondary}
+          >
+            Read our docs
+          </a>
         </div>
       </main>
       <footer className={styles.footer}>

@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google";
 import { pageView } from "../_lib/ga4"
@@ -13,18 +13,18 @@ type Props = {
 
 const Page = async (props: Props) => {
   const category = (await props.params).category
-  const c = () => {
-    sendGAEvent('event', 'custom_event_from_category', { u: "user0001", s: "status1" })
-    alert('sendGAEvent called.')
-  }
+  // const c = () => {
+  //   sendGAEvent('event', 'custom_event_from_category', { u: "user0001", s: "status1" })
+  //   alert('sendGAEvent called.')
+  // }
 
-  const id = generateRandomString()
+  // const id = generateRandomString()
   return (
     <>
       {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
       <div>{category}</div>
-      <button onClick={c}>sendGAEvent</button>
+      {/* <button onClick={c}>sendGAEvent</button> */}
     </>
   )
 }
