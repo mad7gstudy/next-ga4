@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,12 +24,7 @@ export default function Home() {
         </ol>
 
         <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="/category"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/category" className={styles.primary} rel="noopener noreferrer" >
             <Image
               className={styles.logo}
               src="/vercel.svg"
@@ -37,15 +33,10 @@ export default function Home() {
               height={20}
             />
             Deploy now
-          </a>
-          <a
-            href="/category/article"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          </Link>
+          <Link href="/category" className={styles.secondary} rel="noopener noreferrer" >
+            Read our docsF
+          </Link>
         </div>
       </main>
       <footer className={styles.footer}>
