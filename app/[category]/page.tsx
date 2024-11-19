@@ -1,5 +1,6 @@
 'use client'
 
+import { sendGAEvent } from "@next/third-parties/google";
 import { pageView } from "../_lib/ga4"
 import { usePathname } from "next/navigation";
 
@@ -24,15 +25,20 @@ const Page = (props: Props) => {
     const category =  props.params.category
     const url = usePathname()
 
-    pageView({
-        pagePath: url,
-        userId: "user0001",
-        status: "status1"
-    })
+    // pageView({
+    //     pagePath: url,
+    //     userId: "user0001",
+    //     status: "status1"
+    // })
+
+    const c = () => {
+        sendGAEvent('event', 'custom_event_from_next', { u: "user0001", s: "status1" })
+    }
     
     return (
         <>
             <div>{category}</div>
+            <button onClick={c}>sendGAEvent</button>
         </>
     )
 }
