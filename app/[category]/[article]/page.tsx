@@ -17,9 +17,9 @@ const Page = async (props: Props) => {
   const category = (await props.params).category
   const article = (await props.params).article
 
-  // const id = generateRandomString()
+  const id = generateRandomString()
   const c = () => {
-    sendGAEvent('event', 'custom_event_from_category_article', { u: "user0002", s: "status2" })
+    sendGAEvent('event', 'custom_event_from_category_article', { nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
     alert('sendGAEvent called.')
   }
 
