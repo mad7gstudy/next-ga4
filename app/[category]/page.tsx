@@ -1,17 +1,19 @@
-// app/[category]/[article]/page.tsx
 type Props = {
-    params: {
-      category: string;
-    };
-  };
-  
-  export default function Page({ params }: Props) {
-    const { category } = params;
-  
+    params: Promise<{
+        category: string,
+    }>
+}
+
+// // キャッシュ1日
+// export const revalidate = 31536000
+
+const Page = async (props: Props) => {
+    const category =  (await props.params).category
     return (
-      <div>
-        <h1>Category: {category}</h1>
-      </div>
-    );
-  }
-  
+        <>
+            <div>{category}</div>
+        </>
+    )
+}
+
+export default Page
