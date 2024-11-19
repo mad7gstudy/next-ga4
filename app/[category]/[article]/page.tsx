@@ -4,7 +4,7 @@ import { generateRandomString } from "@/app/_lib/gen"
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 
 type Props = {
   params: Promise<{
@@ -42,10 +42,13 @@ const Page = (props: Props) => {
     <>
       {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
-      <Link href={`/?gtm_debug=${gtmDebug}`}>
-        <div>{category} / {article}</div>
-      </Link>
-      <button onClick={c}>sendGAEvent</button>
+
+      <Suspense fallback={<p>Loading...</p>}>
+        <Link href={`/?gtm_debug=${gtmDebug}`}>
+          <div>{category} / {article}</div>
+        </Link>
+        <button onClick={c}>sendGAEvent</button>
+      </Suspense>
     </>
   )
 }

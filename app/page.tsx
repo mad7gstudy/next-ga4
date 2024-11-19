@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 import { generateRandomString } from "./_lib/gen";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation';
 
 type Props = {
@@ -22,58 +22,60 @@ export default function Home(props: Props) {
     <div className={styles.page}>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <Suspense fallback={<p>Loading...</p>}>
+        <main className={styles.main}>
+          <Image
+            className={styles.logo}
+            src="/next.svg"
+            alt="Next.js logo"
+            width={180}
+            height={38}
+            priority
+          />
+          <ol>
+            <li>
+              Get started by editing <code>app/page.tsx</code>.
+            </li>
+            <li>Save and see your changes instantly.</li>
+          </ol>
 
-        <div className={styles.ctas}>
-          <Link
-            className={styles.primary}
-            href={`/category/article?gtm_debug=${gtmDebug}`}
-          >
-            {/* <a
+          <div className={styles.ctas}>
+            <Link
+              className={styles.primary}
+              href={`/category/article?gtm_debug=${gtmDebug}`}
+            >
+              {/* <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
           > */}
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-            {/* </a> */}
-          </Link>
-          <Link
-            className={styles.primary}
-            href={`/category?gtm_debug=${gtmDebug}`}
-          >
-            {/* <a
+              <Image
+                className={styles.logo}
+                src="/vercel.svg"
+                alt="Vercel logomark"
+                width={20}
+                height={20}
+              />
+              Deploy now
+              {/* </a> */}
+            </Link>
+            <Link
+              className={styles.primary}
+              href={`/category?gtm_debug=${gtmDebug}`}
+            >
+              {/* <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondary}
           > */}
-            Read our docs
-            {/* </a> */}
-          </Link>
-        </div>
-      </main>
+              Read our docs
+              {/* </a> */}
+            </Link>
+          </div>
+        </main>
+      </Suspense>
       <footer className={styles.footer}>
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
