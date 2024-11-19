@@ -1,15 +1,26 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Link from "next/link";
 import { generateRandomString } from "./_lib/gen";
+import { useEffect } from "react";
 
 export default function Home() {
   const id = generateRandomString()
+
+  useEffect(() => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'blog_topic' : 'Web制作'
+    });
+  })
+
   return (
     <div className={styles.page}>
-        {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
       <main className={styles.main}>
         <Image
           className={styles.logo}
