@@ -2,6 +2,7 @@
 
 import { generateRandomString } from "@/app/_lib/gen"
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google"
+import Link from "next/link"
 
 type Props = {
   params: Promise<{
@@ -27,7 +28,9 @@ const Page = async (props: Props) => {
     <>
       {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
-      <div>{category} / {article}</div>
+      <Link href={"/"} >
+        <div>{category} / {article}</div>
+      </Link>
       <button onClick={c}>sendGAEvent</button>
     </>
   )

@@ -4,6 +4,7 @@ import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-part
 import { pageView } from "../_lib/ga4"
 import { usePathname } from "next/navigation";
 import { generateRandomString } from "../_lib/gen";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -23,7 +24,9 @@ const Page = async (props: Props) => {
     <>
       {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
+      <Link href={"/"}>
       <div>{category}</div>
+      </Link>
       <button onClick={c}>sendGAEvent</button>
     </>
   )
