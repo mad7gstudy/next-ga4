@@ -3,12 +3,14 @@
 import { generateRandomString } from "@/app/_lib/gen"
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 type Props = {
   params: Promise<{
-    category: string,
+    category: string
     article: string
+    gtm_debug: string
   }>
 }
 
@@ -16,7 +18,10 @@ type Props = {
 // export const revalidate = 31536000
 
 const Page = (props: Props) => {
-  const [id, setId] = useState<String>("")
+  const params = useSearchParams()
+  const gtmDebug = params.get("gtm_debug")
+  const id = generateRandomString()
+
   const [category, setCategory] = useState<String>("")
   const [article, setArticle] = useState<String>("")
   useEffect(() => {
@@ -25,7 +30,6 @@ const Page = (props: Props) => {
       setArticle((await props.params).article)
     }
     getParam()
-    setId(generateRandomString())
   }, [])
 
 
@@ -38,7 +42,7 @@ const Page = (props: Props) => {
     <>
       {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
-      <Link href={"/"} >
+      <Link href={`/?gtm_debug=${gtmDebug}`}>
         <div>{category} / {article}</div>
       </Link>
       <button onClick={c}>sendGAEvent</button>

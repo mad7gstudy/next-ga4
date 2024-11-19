@@ -1,11 +1,23 @@
+'use client'
+
 import Image from "next/image";
 import styles from "./page.module.css";
 import { generateRandomString } from "./_lib/gen";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useSearchParams } from 'next/navigation';
 
-export default function Home() {
+type Props = {
+  params: Promise<{
+    gtm_debug: string
+  }>
+}
+export default function Home(props: Props) {
+  const params = useSearchParams()
+  const gtmDebug = params.get("gtm_debug")
   const id = generateRandomString()
+
   return (
     <div className={styles.page}>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
@@ -29,9 +41,9 @@ export default function Home() {
         <div className={styles.ctas}>
           <Link
             className={styles.primary}
-            href="/category/article"
+            href={`/category/article?gtm_debug=${gtmDebug}`}
           >
-          {/* <a
+            {/* <a
             className={styles.primary}
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
@@ -45,20 +57,20 @@ export default function Home() {
               height={20}
             />
             Deploy now
-          {/* </a> */}
+            {/* </a> */}
           </Link>
           <Link
             className={styles.primary}
-            href="/category"
+            href={`/category?gtm_debug=${gtmDebug}`}
           >
-          {/* <a
+            {/* <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.secondary}
           > */}
             Read our docs
-          {/* </a> */}
+            {/* </a> */}
           </Link>
         </div>
       </main>
