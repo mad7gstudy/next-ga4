@@ -1,5 +1,3 @@
-'use client'
-
 import { sendGAEvent } from "@next/third-parties/google";
 import { pageView } from "../_lib/ga4"
 import { usePathname } from "next/navigation";
