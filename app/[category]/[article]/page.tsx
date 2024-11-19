@@ -18,6 +18,7 @@ const Page = async (props: Props) => {
 
     const c = () => {
         sendGAEvent('event', 'custom_event_from_category_article', { u: "user0002", s: "status2" })
+        alert('sendGAEvent called.')
     }
     
     return (
