@@ -1,8 +1,9 @@
-// 'use client'
+'use client'
 
 import { generateRandomString } from "@/app/_lib/gen"
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 type Props = {
   params: Promise<{
@@ -14,11 +15,20 @@ type Props = {
 // // キャッシュ1日
 // export const revalidate = 31536000
 
-const Page = async (props: Props) => {
-  const category = (await props.params).category
-  const article = (await props.params).article
+const Page = (props: Props) => {
+  const [id, setId] = useState<String>("")
+  const [category, setCategory] = useState<String>("")
+  const [article, setArticle] = useState<String>("")
+  useEffect(() => {
+    const getParam = async () => {
+      setCategory((await props.params).category)
+      setArticle((await props.params).article)
+    }
+    getParam()
+    setId(generateRandomString())
+  }, [])
 
-  const id = generateRandomString()
+
   const c = () => {
     sendGAEvent('event', 'custom_event_from_category_article', { nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
     alert('sendGAEvent called.')

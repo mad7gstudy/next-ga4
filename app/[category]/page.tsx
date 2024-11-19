@@ -1,10 +1,11 @@
-// 'use client'
+'use client'
 
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google";
 import { pageView } from "../_lib/ga4"
 import { usePathname } from "next/navigation";
 import { generateRandomString } from "../_lib/gen";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 type Props = {
   params: Promise<{
@@ -12,9 +13,16 @@ type Props = {
   }>
 }
 
-const Page = async (props: Props) => {
-  const category = (await props.params).category
-  const id = generateRandomString()
+const Page = (props: Props) => {
+  const [id, setId] = useState<String>("")
+  const [category, setCategory] = useState<String>("")
+  useEffect(() => {
+    const getParam = async () => {
+      setCategory((await props.params).category)
+    }
+    getParam()
+    setId( generateRandomString())
+  }, [])
   const c = () => {
     sendGAEvent('event', 'custom_event_from_category', { nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
     alert('sendGAEvent called.')
