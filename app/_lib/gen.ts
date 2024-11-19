@@ -9,4 +9,10 @@ const generateRandomString = (length: number = 4): string => {
     return result;
 }
 
-export { generateRandomString } 
+const getRandomStatus = (): string => {
+  const strings: string[] = ["未回答", "回答中", "回答済み", "承認済み", "公開済み"];
+  const randomIndex: number = Math.floor(Math.random() * strings.length);
+  return strings[randomIndex];
+}
+
+export { generateRandomString, getRandomStatus } 

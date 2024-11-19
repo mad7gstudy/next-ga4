@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 import { generateRandomString } from "./_lib/gen";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Link from "next/link";
+import { useUser } from "./_context/userContext";
 
 type Params = Promise<{ slug: string }>
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>

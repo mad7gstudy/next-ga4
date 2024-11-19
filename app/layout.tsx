@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { generateRandomString } from "./_lib/gen";
+import { generateRandomString, getRandomStatus } from "./_lib/gen";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { UserProvider, useUser } from "./_context/userContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,10 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
-        {children}
+        <UserProvider>
+          <label></label>
+          {children}
+        </UserProvider>
       </body>
     </html>
   );
