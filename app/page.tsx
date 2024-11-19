@@ -1,12 +1,14 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Link from "next/link";
+import { generateRandomString } from "./_lib/gen";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      {/* <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics> */}
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ nsl_user_id: `user_${generateRandomString()}`, nsl_user_status: `status_${generateRandomString()}` }} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
       <main className={styles.main}>
         <Image
           className={styles.logo}
