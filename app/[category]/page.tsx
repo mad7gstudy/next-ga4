@@ -21,7 +21,6 @@ const Page = async (props: Props) => {
 // const Page = (props: Props) => {
     const category =  (await props.params).category
     // const category =  props.params.category
-    const url = usePathname()
 
     // pageView({
     //     pagePath: url,
