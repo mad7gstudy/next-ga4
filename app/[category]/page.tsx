@@ -30,7 +30,7 @@ const Page = async (props: Props) => {
     // })
 
     const c = () => {
-        sendGAEvent('event', 'custom_event_from_next', { u: "user0001", s: "status1" })
+        sendGAEvent('event', 'custom_event_from_category', { u: "user0001", s: "status1" })
     }
     
     return (
