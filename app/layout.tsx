@@ -27,8 +27,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GoogleTagManager gtmId="GTM-W5B26FP9" />
-        <GoogleAnalytics gaId="G-7BVJTTS6YT"></GoogleAnalytics>
+        {/* <GoogleTagManager gtmId="GTM-W5B26FP9" /> */}
+        <GoogleAnalytics gaId="G-7BVJTTS6YT" debugMode={true} />
         {children}
       </body>
     </html>

@@ -8,11 +8,9 @@ type Props = {
 }
 
 const pageView = (prop: Props) => {
-    sendGAEvent('page_view', {
-        page_path: prop.pagePath,
-        u: prop.userId,
-        s: prop.status
-    });
+    // sendGTMEvent('page_view', {
+    //     page_path: prop.pagePath,
+    //     user_id: prop.userId,
+    //     // user_status: prop.status,
+    // });
 }
-
-export { pageView } 
