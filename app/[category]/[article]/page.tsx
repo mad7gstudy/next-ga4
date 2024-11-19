@@ -42,7 +42,7 @@ const Page = (props: Props) => {
 
 
   const c = () => {
-    sendGAEvent('event', 'low_data_download_event', { user_id: `${userIdInputRef.current!.value}`, nsl_user_id: `${userIdInputRef.current!.value}`, nsl_user_status: `${userStateInputRef.current!.value}` })
+    sendGAEvent('event', 'low_data_download_event', { user_id: `${user.id}`, nsl_user_id: `${user.id}`, nsl_user_status: `${user.state}` })
     alert('sendGAEvent called.')
   }
 

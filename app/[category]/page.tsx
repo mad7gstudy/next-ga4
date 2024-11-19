@@ -34,7 +34,7 @@ const Page = (props: Props) => {
     getParam()
   }, [])
   const c = () => {
-    sendGAEvent('event', 'survey_empty_file_download_event', { user_id: `${userIdInputRef.current!.value}`, nsl_user_id: `${userIdInputRef.current!.value}`, nsl_user_status: `${userStateInputRef.current!.value}` })
+    sendGAEvent('event', 'survey_empty_file_download_event', { user_id: `${user.id}`, nsl_user_id: `${user.id}`, nsl_user_status: `${user.state}` })
     alert('sendGAEvent called.')
   }
 
