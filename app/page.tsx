@@ -14,7 +14,6 @@ export default async function Home(props: {
   searchParams: SearchParams
 }) {
   const searchParams = await props.searchParams
-  console.log(searchParams)
 
   const gtmDebug = searchParams.gtm_debug
   const id = generateRandomString()
