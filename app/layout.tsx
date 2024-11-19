@@ -40,8 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <GoogleTagManager gtmId="GTM-W5B26FP9" dataLayer={{ nsl_user_id: `user_${generateRandomString()}`, nsl_user_status: `status_${generateRandomString()}` }} />
-        <GoogleAnalytics gaId="G-7BVJTTS6YT" debugMode={true} />
+        <GoogleTagManager gtmId="GTM-W5B26FP9" dataLayerName="nsl_user" dataLayer={{ nsl_user_id: `user_${generateRandomString()}`, nsl_user_status: `status_${generateRandomString()}` }} />
+        <GoogleAnalytics gaId="G-7BVJTTS6YT" debugMode={true} dataLayerName="nsl_user" />
         {children}
       </body>
     </html>
