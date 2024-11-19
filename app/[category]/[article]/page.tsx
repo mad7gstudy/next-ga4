@@ -63,7 +63,7 @@ const Page = (props: Props) => {
           ローデータダウンロードをGA4送信
         </button>
         <Link href={`/?gtm_debug=${gtmDebug}`}>
-          <div>{category} / {article}</div>
+          <div>url: {`/${category}/${article}`}</div>
         </Link>
       </Suspense>
     </>

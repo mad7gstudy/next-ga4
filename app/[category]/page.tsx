@@ -54,7 +54,7 @@ const Page = (props: Props) => {
           調査票ダウンロードイベントをGA4送信
         </button>
         <Link href={`/?gtm_debug=${gtmDebug}`}>
-          <div>{category}</div>
+          <div>url: {`/${category}`}</div>
         </Link>
       </Suspense>
     </>
