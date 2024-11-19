@@ -29,7 +29,7 @@ export default function Home() {
         <div className={styles.ctas}>
           <Link
             className={styles.primary}
-            href={"/category/article"}
+            href="/category/article"
           >
           {/* <a
             className={styles.primary}
@@ -49,7 +49,7 @@ export default function Home() {
           </Link>
           <Link
             className={styles.primary}
-            href={"/category"}
+            href="/category"
           >
           {/* <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
