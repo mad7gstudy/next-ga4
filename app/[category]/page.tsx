@@ -4,25 +4,25 @@ import { sendGAEvent } from "@next/third-parties/google";
 import { pageView } from "../_lib/ga4"
 import { usePathname } from "next/navigation";
 
-// type Props = {
-//     params: Promise<{
-//         category: string,
-//     }>
-// }
-
 type Props = {
-    params: {
+    params: Promise<{
         category: string,
-    }
+    }>
 }
+
+// type Props = {
+//     params: {
+//         category: string,
+//     }
+// }
 
 // // キャッシュ1日
 // export const revalidate = 31536000
 
-// const Page = async (props: Props) => {
-const Page = (props: Props) => {
-    // const category =  (await props.params).category
-    const category =  props.params.category
+const Page = async (props: Props) => {
+// const Page = (props: Props) => {
+    const category =  (await props.params).category
+    // const category =  props.params.category
     const url = usePathname()
 
     // pageView({
