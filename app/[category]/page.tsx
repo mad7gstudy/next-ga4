@@ -1,7 +1,6 @@
 'use client'
 
 import { GoogleAnalytics, GoogleTagManager, sendGAEvent } from "@next/third-parties/google";
-import { pageView } from "../_lib/ga4"
 import { usePathname, useSearchParams } from "next/navigation";
 import { generateRandomString } from "../_lib/gen";
 import Link from "next/link";
@@ -27,7 +26,7 @@ const Page = (props: Props) => {
     getParam()
   }, [])
   const c = () => {
-    sendGAEvent('event', 'custom_event_from_category', { nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
+    sendGAEvent('event', 'custom_event_from_category', { user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
     alert('sendGAEvent called.')
   }
 

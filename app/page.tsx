@@ -14,14 +14,13 @@ export default async function Home(props: {
   searchParams: SearchParams
 }) {
   const searchParams = await props.searchParams
-
   const gtmDebug = searchParams.gtm_debug
-  const id = generateRandomString()
+  // const id = generateRandomString()
 
   return (
     <div className={styles.page}>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} />
+      {/* <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ""} dataLayer={{ user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` }} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_ID ?? ""} debugMode={true} /> */}
       <main className={styles.main}>
         <Image
           className={styles.logo}

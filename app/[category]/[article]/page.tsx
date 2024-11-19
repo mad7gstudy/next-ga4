@@ -34,7 +34,7 @@ const Page = (props: Props) => {
 
 
   const c = () => {
-    sendGAEvent('event', 'custom_event_from_category_article', { nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
+    sendGAEvent('event', 'custom_event_from_category_article', { user_id: `user_${id}`, nsl_user_id: `user_${id}`, nsl_user_status: `status_${id}` })
     alert('sendGAEvent called.')
   }
 
